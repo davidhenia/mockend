@@ -129,7 +129,7 @@
       "hasMany": "Photo"
     },
     "type": { "loremWords": { "minLength": 1, "maxLength": 3 } },
-    "title": { "loremWords": { "minLength": 5, "maxLength": 20 } },    
+    "title": { "loremWords": { "minLength": 10, "maxLength": 30 } },    
     "description": {  "loremParagraphs": { "minLength": 20, "maxLength": 50 } },
     "note": { "loremSentences": { "minLength": 15, "maxLength": 30 } },
     "reviewCount": { "int": { "min": 0, "max": 1000000 } },
