@@ -1,0 +1,112 @@
+{
+  "User": {
+    "name": { { "regexp": "[A-Z][a-z]{5,10}" } },
+    "avatarUrl": {
+      "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
+    },
+    "email": {
+      "regexp": "#[a-z]{5,10}@[a-z]{5}\\.[a-z]{2,3}"
+    },
+    "createdAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "updatedAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "hasMany": "Article",
+    "hasMany": "ArticleComment"
+  },
+  "Article": {
+    "cover": {
+      "regexp": "https://picsum\\.photos/seed/[0-9]{5}/1920/270"
+    },
+    "title": { "loremWords": { "minLength": 5, "maxLength": 20 } },
+    "body": {  "loremParagraphs": { "minLength": 200, "maxLength": 500 } },
+    "isPublished": { "boolean": {} },
+    "likes": { "int": { "min": 0, "max": 1000000 } },
+    "createdAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+  "updatedAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "comments": {
+      "hasMany": "ArticleComment"
+    },
+    "author": {
+      "belongsTo": "User"
+    }
+  },
+  "ArticleComment": {
+    "body": {  "loremSentences": { "minLength": 2, "maxLength": 5 } },
+    "likes": { "int": { "min": 0, "max": 1000000 } },
+    "createdAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "article": {
+      "belongsTo": "Article"
+    },
+    "author": {
+      "belongsTo": "User"
+    }
+  },
+  "Photo": {
+    "url": {
+      "regexp": "https://source\\.unsplash\\.com/random/[0-9]{1,5}/"
+    },
+    "description": { "loremWords": { "minLength": 5, "maxLength": 20 } },
+    "isPublished": { "boolean": {} },
+    "geoloc_latitude": { "regexp": "/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/"  },
+    "geoloc_longitude": { "regexp": "/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/" },
+    "likes": { "int": { "min": 0, "max": 1000000 } },
+    "createdAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "updatedAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "comments": {
+      "hasMany": "PhotoComment"
+    },
+    "author": {
+      "belongsTo": "User"
+    }
+  },
+  "PhotoComment": {
+    "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
+    "likes": { "int": { "min": 0, "max": 1000000 } },
+    "createdAt: {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "photo": {
+      "belongsTo": "Photo"
+    },
+    "author": {
+      "belongsTo": "Photo"
+    }
+  },
+}
