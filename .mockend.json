@@ -95,8 +95,8 @@
     },
     "description": { "loremWords": { "minLength": 5, "maxLength": 20 } },
     "isPublished": { "boolean": {} },
-    "geoloc_latitude": { "regexp": "([0-9]{1,2}|90)\\.[0-9]{1,10}" },
-    "geoloc_longitude": { "regexp": "([0-9]{1,2}[0-7][0-9]{1,3}|180)\\.[0-9]{1,10}" },
+    "geoloc_latitude": { "regexp": "^-?[0-9]{1,2}\\.[0-9]{1,10}" },
+    "geoloc_longitude": { "regexp": "^-?[0-9]{1,2}[0-7][0-9]{1,3}\\.[0-9]{1,10}" },
     "likes": { "int": { "min": 0, "max": 1000000 } },
     "createdAt": {
       "dateTime": {
