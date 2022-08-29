@@ -146,6 +146,9 @@
     },
     "geoloc_latitude": { "regexp": "[-+]?[0-8]{1}[0-9]{1}\\.[0-9]{1,10}" },
     "geoloc_longitude": { "regexp": "[-+]?[0-1]{1}[0-7]{1}[0-9]{1}\\.[0-9]{1,10}" },
-    "likes": { "int": { "min": 0, "max": 1000000 } }
+    "likes": { "int": { "min": 0, "max": 1000000 } },
+    "tags": {
+      "loremWords": { "minLength": 5, "maxLength": 20 }
+    }
   }
 }
