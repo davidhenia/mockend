@@ -139,60 +139,13 @@
       "belongsTo": "User"
     },
     "hostUpdates": {
-      "hasMany": "HostUpdates"
+      "hasMany": "Comment"
     },
     "guestReviews": {
-      "hasMany": "GuestReview"
+      "hasMany": "Comment"
     },
     "geoloc_latitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}"  },
     "geoloc_longitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}" },
     "likes": { "int": { "min": 0, "max": 1000000 } }
-  },
-  "HostUpdates": {
-    "id": { "int": { "min": 0, "max": 100000000 } },
-    "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
-    "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt": {
-      "dateTime": {
-        "min": "2000-01-01T00:00:00Z",
-        "max": "2022-07-31T23:59:59Z"
-      }
-    },
-    "updatedAt": {
-      "dateTime": {
-        "min": "2000-01-01T00:00:00Z",
-        "max": "2022-07-31T23:59:59Z"
-      }
-    },
-    "images": {
-      "hasMany": "Photo"
-    },
-    "author": {
-      "belongsTo": "User"
-    }
-  },
-  "GuestReview": {
-    "id": { "int": { "min": 0, "max": 100000000 } },
-    "reviewScore": { "int": { "min": 0, "max": 5 } },
-    "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
-    "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt": {
-      "dateTime": {
-        "min": "2000-01-01T00:00:00Z",
-        "max": "2022-07-31T23:59:59Z"
-      }
-    },
-    "updatedAt": {
-      "dateTime": {
-        "min": "2000-01-01T00:00:00Z",
-        "max": "2022-07-31T23:59:59Z"
-      }
-    },
-    "images": {
-      "hasMany": "Photo"
-    },
-    "author": {
-      "belongsTo": "User"
-    }
   }
 }
