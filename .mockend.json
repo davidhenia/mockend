@@ -150,6 +150,13 @@
     "tags": {
       "loremWords": { "minLength": 5, "maxLength": 20 }
     },
+    "highlights": {
+      "string": [
+        "Tall",
+        "Modern",
+        "Modern"
+      ]
+    },
     "created_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
