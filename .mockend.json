@@ -118,7 +118,7 @@
     },
     "tags": {
       "hasMany": "Tag"
-    },
+    }
   },
   "Home": { 
     "id": { "int": { "min": 0, "max": 100000000 } },
