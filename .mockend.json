@@ -1,42 +1,58 @@
 {
   "User": {
-    "name": { { "regexp": "[A-Z][a-z]{5,10}" } },
+    "id": { "int": { "min": 0, "max": 1000000000 } },
+    "name": { "regexp": "[A-Z][a-z]{5,10}" },
     "avatarUrl": {
       "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
     },
     "email": {
       "regexp": "#[a-z]{5,10}@[a-z]{5}\\.[a-z]{2,3}"
     },
-    "createdAt: {
+    "createdAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-    "updatedAt: {
+    "updatedAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-    "hasMany": "Article",
-    "hasMany": "ArticleComment"
+    "reviewCount": { "int": { "min": 0, "max": 1000000 } },
+    "reviewValue": { "int": { "min": 0, "max": 5 } },
+    "articles": { 
+      "hasMany": "Article"
+    },
+    "comments" : {
+      "hasMany": "ArticleComment"
+    },
+    "photos" : {
+      "hasMany": "Photo"
+    }
   },
   "Article": {
+    "id": { "int": { "min": 0, "max": 100000000 } },
     "cover": {
       "regexp": "https://picsum\\.photos/seed/[0-9]{5}/1920/270"
     },
     "title": { "loremWords": { "minLength": 5, "maxLength": 20 } },
     "body": {  "loremParagraphs": { "minLength": 200, "maxLength": 500 } },
+    "tags": {
+      "loremWords": { "minLength": 5, "maxLength": 20 }
+    },
     "isPublished": { "boolean": {} },
     "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt: {
+    "reviewCount": { "int": { "min": 0, "max": 1000000 } },
+    "reviewValue": { "int": { "min": 0, "max": 5 } },
+    "createdAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-  "updatedAt: {
+  "updatedAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -50,9 +66,16 @@
     }
   },
   "ArticleComment": {
+    "id": { "int": { "min": 0, "max": 100000000 } },
     "body": {  "loremSentences": { "minLength": 2, "maxLength": 5 } },
     "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt: {
+    "createdAt": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "updatedAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -66,21 +89,22 @@
     }
   },
   "Photo": {
+    "id": { "int": { "min": 0, "max": 100000000 } },
     "url": {
       "regexp": "https://source\\.unsplash\\.com/random/[0-9]{1,5}/"
     },
     "description": { "loremWords": { "minLength": 5, "maxLength": 20 } },
     "isPublished": { "boolean": {} },
-    "geoloc_latitude": { "regexp": "/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/"  },
-    "geoloc_longitude": { "regexp": "/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/" },
+    "geoloc_latitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}"  },
+    "geoloc_longitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}" },
     "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt: {
+    "createdAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-    "updatedAt: {
+    "updatedAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -94,9 +118,16 @@
     }
   },
   "PhotoComment": {
+    "id": { "int": { "min": 0, "max": 100000000 } },
     "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
     "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt: {
+    "createdAt": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "updatedAt": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -106,7 +137,85 @@
       "belongsTo": "Photo"
     },
     "author": {
-      "belongsTo": "Photo"
+      "belongsTo": "user"
     }
   },
+  "Home": { 
+    "id": { "int": { "min": 0, "max": 100000000 } },
+    "cover": {
+      "regexp": "https://source\\.unsplash\\.com/random/[0-9]{1,5}/"
+    },
+    "images": {
+      "hasMany": "Photo"
+    },
+    "type": { "loremWords": { "minLength": 1, "maxLength": 3 } },
+    "title": { "loremWords": { "minLength": 5, "maxLength": 20 } },    
+    "description": {  "loremParagraphs": { "minLength": 2, "maxLength": 10 } },
+    "note": { "loremWords": { "minLength": 5, "maxLength": 20 } },
+    "reviewCount": { "int": { "min": 0, "max": 1000000 } },
+    "reviewValue": { "int": { "min": 0, "max": 5 } },
+    "features": {
+      "loremWords": { "minLength": 5, "maxLength": 20 }
+    },
+    "pricePerNight": { "int": { "min": 0, "max": 1000000 } },   
+    "host": {
+      "belongsTo": "User"
+    },
+    "hostComments": {
+      "hasMany": "HostHomeComment"
+    },
+    "guestComments": {
+      "hasMany": "HostHomeComment"
+    },
+    "geoloc_latitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}"  },
+    "geoloc_longitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}" },
+    "likes": { "int": { "min": 0, "max": 1000000 } }
+  },
+  "HostHomeComment": {
+    "id": { "int": { "min": 0, "max": 100000000 } },
+    "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
+    "likes": { "int": { "min": 0, "max": 1000000 } },
+    "createdAt": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "updatedAt": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "images": {
+      "hasMany": "Photo"
+    },
+    "author": {
+      "belongsTo": "User"
+    }
+  },
+  "GuestHomeComment": {
+    "id": { "int": { "min": 0, "max": 100000000 } },
+    "reviewScore": { "int": { "min": 0, "max": 5 } },
+    "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
+    "likes": { "int": { "min": 0, "max": 1000000 } },
+    "createdAt": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "updatedAt": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "images": {
+      "hasMany": "Photo"
+    },
+    "author": {
+      "belongsTo": "User"
+    }
+  }
 }
