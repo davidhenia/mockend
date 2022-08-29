@@ -59,13 +59,13 @@
       }
     },
     "comments": {
-      "hasMany": "ArticleComment"
+      "hasMany": "Comment"
     },
     "author": {
       "belongsTo": "User"
     }
   },
-  "ArticleComment": {
+  "Comment": {
     "id": { "int": { "min": 0, "max": 100000000 } },
     "body": {  "loremSentences": { "minLength": 2, "maxLength": 5 } },
     "likes": { "int": { "min": 0, "max": 1000000 } },
@@ -111,33 +111,10 @@
       }
     },
     "comments": {
-      "hasMany": "PhotoComment"
+      "hasMany": "Comment"
     },
     "author": {
       "belongsTo": "User"
-    }
-  },
-  "PhotoComment": {
-    "id": { "int": { "min": 0, "max": 100000000 } },
-    "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
-    "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt": {
-      "dateTime": {
-        "min": "2000-01-01T00:00:00Z",
-        "max": "2022-07-31T23:59:59Z"
-      }
-    },
-    "updatedAt": {
-      "dateTime": {
-        "min": "2000-01-01T00:00:00Z",
-        "max": "2022-07-31T23:59:59Z"
-      }
-    },
-    "photo": {
-      "belongsTo": "Photo"
-    },
-    "author": {
-      "belongsTo": "user"
     }
   },
   "Home": { 
@@ -161,17 +138,17 @@
     "host": {
       "belongsTo": "User"
     },
-    "hostComments": {
-      "hasMany": "HostHomeComment"
+    "hostUpdates": {
+      "hasMany": "HostUpdates"
     },
-    "guestComments": {
-      "hasMany": "HostHomeComment"
+    "guestReviews": {
+      "hasMany": "GuestReview"
     },
     "geoloc_latitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}"  },
     "geoloc_longitude": { "regexp": "[1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}" },
     "likes": { "int": { "min": 0, "max": 1000000 } }
   },
-  "HostHomeComment": {
+  "HostUpdates": {
     "id": { "int": { "min": 0, "max": 100000000 } },
     "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
     "likes": { "int": { "min": 0, "max": 1000000 } },
@@ -194,7 +171,7 @@
       "belongsTo": "User"
     }
   },
-  "GuestHomeComment": {
+  "GuestReview": {
     "id": { "int": { "min": 0, "max": 100000000 } },
     "reviewScore": { "int": { "min": 0, "max": 5 } },
     "body": { "loremSentences": { "minLength": 2, "maxLength": 5 } },
