@@ -8,13 +8,13 @@
     "email": {
       "regexp": "[a-z]{5,10}@[a-z]{5}\\.[a-z]{2,3}"
     },
-    "createdAt": {
+    "created_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-    "updatedAt": {
+    "updated_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -46,13 +46,13 @@
     "likes": { "int": { "min": 0, "max": 1000000 } },
     "reviewCount": { "int": { "min": 0, "max": 1000000 } },
     "reviewValue": { "int": { "min": 0, "max": 5 } },
-    "createdAt": {
+    "created_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-  "updatedAt": {
+  "updated_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -69,13 +69,13 @@
     "id": { "int": { "min": 0, "max": 100000000 } },
     "body": {  "loremSentences": { "minLength": 2, "maxLength": 5 } },
     "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt": {
+    "created_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-    "updatedAt": {
+    "updated_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -98,13 +98,13 @@
     "geoloc_latitude": { "regexp": "[-+]?[0-8]{1}[0-9]{1}\\.[0-9]{1,10}" },
     "geoloc_longitude": { "regexp": "[-+]?[0-1]{1}[0-7]{1}[0-9]{1}\\.[0-9]{1,10}" },
     "likes": { "int": { "min": 0, "max": 1000000 } },
-    "createdAt": {
+    "created_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
       }
     },
-    "updatedAt": {
+    "updated_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
         "max": "2022-07-31T23:59:59Z"
@@ -149,6 +149,18 @@
     "likes": { "int": { "min": 0, "max": 1000000 } },
     "tags": {
       "loremWords": { "minLength": 5, "maxLength": 20 }
+    },
+    "created_at": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
+    },
+    "updated_at": {
+      "dateTime": {
+        "min": "2000-01-01T00:00:00Z",
+        "max": "2022-07-31T23:59:59Z"
+      }
     }
   }
 }
