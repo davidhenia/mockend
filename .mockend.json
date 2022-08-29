@@ -40,7 +40,7 @@
     "title": { "loremWords": { "minLength": 5, "maxLength": 20 } },
     "body": {  "loremParagraphs": { "minLength": 200, "maxLength": 500 } },
     "tags": {
-      "loremWords": { "minLength": 5, "maxLength": 20 }
+      "hasMany": "Tag"
     },
     "isPublished": { "boolean": {} },
     "likes": { "int": { "min": 0, "max": 1000000 } },
@@ -115,7 +115,10 @@
     },
     "author": {
       "belongsTo": "User"
-    }
+    },
+    "tags": {
+      "hasMany": "Tag"
+    },
   },
   "Home": { 
     "id": { "int": { "min": 0, "max": 100000000 } },
@@ -144,19 +147,15 @@
     "guestReviews": {
       "hasMany": "Comment"
     },
+    "highlights": {
+      "hasMany": "Highlight"
+    },
+    "tags": {
+      "hasMany": "Tag"
+    },
     "geoloc_latitude": { "regexp": "[-+]?[0-8]{1}[0-9]{1}\\.[0-9]{1,10}" },
     "geoloc_longitude": { "regexp": "[-+]?[0-1]{1}[0-7]{1}[0-9]{1}\\.[0-9]{1,10}" },
     "likes": { "int": { "min": 0, "max": 1000000 } },
-    "tags": {
-      "loremWords": { "minLength": 5, "maxLength": 20 }
-    },
-    "highlights": {
-      "string": [
-        "Tall",
-        "Modern",
-        "Modern"
-      ]
-    },
     "created_at": {
       "dateTime": {
         "min": "2000-01-01T00:00:00Z",
@@ -169,5 +168,37 @@
         "max": "2022-07-31T23:59:59Z"
       }
     }
-  }
+  },
+ "Highlight": {
+  "id": { "int": { "min": 0, "max": 100000000 } },
+  "body": { "loremWords": { "minLength": 1, "maxLength": 20 } },   
+  "created_at": {
+    "dateTime": {
+      "min": "2000-01-01T00:00:00Z",
+      "max": "2022-07-31T23:59:59Z"
+    }
+  },
+  "updated_at": {
+    "dateTime": {
+      "min": "2000-01-01T00:00:00Z",
+      "max": "2022-07-31T23:59:59Z"
+    }
+  } 
+ },
+ "Tag": {
+  "id": { "int": { "min": 0, "max": 100000000 } },
+  "body": { "loremWords": { "minLength": 1, "maxLength": 3 } },   
+  "created_at": {
+    "dateTime": {
+      "min": "2000-01-01T00:00:00Z",
+      "max": "2022-07-31T23:59:59Z"
+    }
+  },
+  "updated_at": {
+    "dateTime": {
+      "min": "2000-01-01T00:00:00Z",
+      "max": "2022-07-31T23:59:59Z"
+    }
+  } 
+ }
 }
