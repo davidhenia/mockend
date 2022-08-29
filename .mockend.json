@@ -130,13 +130,10 @@
     },
     "type": { "loremWords": { "minLength": 1, "maxLength": 3 } },
     "title": { "loremWords": { "minLength": 5, "maxLength": 20 } },    
-    "description": {  "loremParagraphs": { "minLength": 2, "maxLength": 10 } },
-    "note": { "loremWords": { "minLength": 5, "maxLength": 20 } },
+    "description": {  "loremParagraphs": { "minLength": 4, "maxLength": 20 } },
+    "note": { "loremWords": { "minLength": 15, "maxLength": 30 } },
     "reviewCount": { "int": { "min": 0, "max": 1000000 } },
     "reviewValue": { "int": { "min": 0, "max": 5 } },
-    "features": {
-      "loremWords": { "minLength": 5, "maxLength": 20 }
-    },
     "pricePerNight": { "int": { "min": 0, "max": 1000000 } },   
     "host": {
       "belongsTo": "User"
