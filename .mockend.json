@@ -95,8 +95,8 @@
     },
     "description": { "loremWords": { "minLength": 5, "maxLength": 20 } },
     "isPublished": { "boolean": {} },
-    "geoloc_latitude": { "regexp": "#-?([0-9]{1,2}|90)\\.([0-9]{1,10})" },
-    "geoloc_longitude": { "regexp": "#-?([0-9]{1,2}|1[0-7][0-9]|180)(\\.[0-9]{1,10})$" },
+    "geoloc_latitude": { "regexp": "^-?([0-9]{1,2}|90)\\.([0-9]{1,10})" },
+    "geoloc_longitude": { "regexp": "^-?([0-9]{1,2}|1[0-7][0-9]|180)(\\.[0-9]{1,10})$" },
     "likes": { "int": { "min": 0, "max": 1000000 } },
     "createdAt": {
       "dateTime": {
@@ -144,7 +144,7 @@
     "guestReviews": {
       "hasMany": "Comment"
     },
-    "geoloc_latitude": { "regexp": "#-?([0-9]{1,2}|90)\\.([0-9]{1,10})" },
+    "geoloc_latitude": { "regexp": "^-?([0-9]{1,2}|90)\\.([0-9]{1,10})" },
     "geoloc_longitude": { "regexp": "^-?([0-9]{1,2}|1[0-7][0-9]|180){1,5}(\\.[0-9]{1,10})$" },
     "likes": { "int": { "min": 0, "max": 1000000 } }
   }
